@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">照片占位图</title>
+  <desc id="desc">可替换为自己的照片</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8d9cf"/>
+      <stop offset="0.55" stop-color="#d6d4f2"/>
+      <stop offset="1" stop-color="#9eb5cf"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b9c9b0"/>
+      <stop offset="1" stop-color="#819d8c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <circle cx="930" cy="190" r="100" fill="#fff4c9" opacity=".75"/>
+  <path d="M0 600 Q230 470 420 585 T820 560 T1200 520 V900 H0Z" fill="url(#ground)" opacity=".9"/>
+  <path d="M0 690 Q260 575 520 700 T1200 650 V900 H0Z" fill="#668875" opacity=".55"/>
+  <g fill="#fff" opacity=".85">
+    <circle cx="190" cy="200" r="12"/><circle cx="250" cy="145" r="8"/><circle cx="315" cy="230" r="10"/>
+  </g>
+  <rect x="290" y="340" width="620" height="220" rx="28" fill="#fff" opacity=".28"/>
+  <text x="600" y="445" text-anchor="middle" fill="#fff" font-size="42" font-family="system-ui, sans-serif" font-weight="700">PHOTO PLACEHOLDER</text>
+  <text x="600" y="500" text-anchor="middle" fill="#fff" font-size="28" font-family="system-ui, sans-serif">替换为你的照片</text>
+</svg>
