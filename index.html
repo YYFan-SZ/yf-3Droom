@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#eee6f4" />
+    <title>yf-3Droom · 3D 房间模板</title>
+  </head>
+  <body>
+    <main class="room-shell">
+      <canvas id="room-canvas" aria-label="3D房间"></canvas>
+
+      <div class="loading-card" id="loading-card">
+        <div class="loading-garland" aria-hidden="true">
+          <svg viewBox="0 0 480 150" role="presentation">
+            <path class="loading-wire" d="M18 42 C76 88 124 84 174 44 C222 8 264 12 306 52 C351 95 401 88 462 38" />
+            <g class="loading-star loading-star--1" transform="translate(54 61)"><path d="M0-10 3-3 10-2 5 3 6 10 0 6-6 10-5 3-10-2-3-3Z" /></g>
+            <g class="loading-star loading-star--2" transform="translate(129 68)"><path d="M0-10 3-3 10-2 5 3 6 10 0 6-6 10-5 3-10-2-3-3Z" /></g>
+            <g class="loading-star loading-star--3" transform="translate(211 25)"><path d="M0-12 4-4 12-2 6 4 7 12 0 7-7 12-6 4-12-2-4-4Z" /></g>
+            <g class="loading-star loading-star--4" transform="translate(291 42)"><path d="M0-10 3-3 10-2 5 3 6 10 0 6-6 10-5 3-10-2-3-3Z" /></g>
+            <g class="loading-star loading-star--5" transform="translate(375 74)"><path d="M0-12 4-4 12-2 6 4 7 12 0 7-7 12-6 4-12-2-4-4Z" /></g>
+            <g class="loading-star loading-star--6" transform="translate(444 48)"><path d="M0-9 3-3 9-2 4 3 5 9 0 6-5 9-4 3-9-2-3-3Z" /></g>
+          </svg>
+        </div>
+        <strong>正在布置 3D 房间…</strong>
+        <div class="loading-progress-track" aria-hidden="true"><i id="loading-progress-fill"></i></div>
+        <span id="loading-progress">0%</span>
+      </div>
+
+      <aside class="exploration-progress" id="exploration-progress" aria-live="polite">
+        <span>ROOM EXPLORATION</span>
+        <strong id="exploration-progress-label">已发现 <b id="exploration-progress-count">0</b> / 8 个互动</strong>
+        <div class="exploration-progress-track" role="progressbar" aria-label="房间探索进度" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0">
+          <i id="exploration-progress-fill"></i>
+        </div>
+      </aside>
+
+      <div class="weather-status" id="weather-status" aria-live="polite" aria-hidden="true">
+        <span>窗外天气</span>
+        <strong id="weather-status-label">白天阳光</strong>
+      </div>
+
+      <nav class="room-controls" aria-label="房间快捷控制">
+        <div class="music-player" id="music-player" aria-hidden="true">
+          <div class="music-player-track">
+            <span>NOW PLAYING</span>
+            <strong id="music-track-title">ROSÉ · number one girl</strong>
+          </div>
+          <button class="music-player-button" id="music-previous" type="button" aria-label="上一首" title="上一首">‹</button>
+          <button class="music-player-button music-player-button--play" id="music-play-pause" type="button" aria-label="播放" title="播放">
+            <span class="music-play-icon" aria-hidden="true"></span>
+          </button>
+          <button class="music-player-button" id="music-next" type="button" aria-label="下一首" title="下一首">›</button>
+        </div>
+        <button class="room-control room-control--music" id="music-control" type="button" aria-label="播放音乐" aria-pressed="false" title="播放音乐">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M6.5 18.5h4l5 4V9.5l-5 4h-4z" />
+            <path d="M20 12.2c1.3 1 2 2.3 2 3.8s-.7 2.8-2 3.8M23.4 9.5c2.1 1.7 3.3 3.8 3.3 6.5s-1.2 4.8-3.3 6.5" />
+          </svg>
+        </button>
+        <button class="room-control room-control--lighting" id="lighting-control" type="button" aria-label="切换为暗色房间" aria-pressed="false" title="切换房间亮暗">
+          <svg viewBox="0 0 36 32" aria-hidden="true">
+            <path class="lighting-rays" d="M18 3v3M7.4 7.4l2.2 2.2M28.6 7.4l-2.2 2.2M3 18h3M30 18h3" />
+            <path class="lighting-sun" d="M10 19a8 8 0 0 1 16 0M6 23h24M9 27h18" />
+          </svg>
+        </button>
+        <button class="room-control room-control--panorama" id="return-panorama" type="button" aria-label="返回房间全景" title="返回全景">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M6 13V7h6M26 13V7h-6M6 19v6h6M26 19v6h-6" />
+            <path d="M9 16h14M9 16l3-3M9 16l3 3" />
+          </svg>
+        </button>
+      </nav>
+
+      <div class="receipt-actions" id="receipt-actions" aria-hidden="true">
+        <button class="receipt-action receipt-save" id="receipt-save" type="button" aria-label="将小票保存为图片">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 16v3h14v-3" />
+          </svg>
+          <span>保存小票</span>
+        </button>
+        <button class="receipt-action receipt-again" id="receipt-again" type="button" aria-label="再打印一张小票">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 8V4h10v4M6 17H4V9h16v8h-2M7 14h10v6H7z" />
+            <path d="M17 12h.01" />
+          </svg>
+          <span>再来一张</span>
+        </button>
+      </div>
+
+      <section class="contact-card" id="contact-card" aria-hidden="true" aria-label="联系方式">
+        <button class="contact-card-close" id="contact-card-close" type="button" aria-label="关闭联系方式">×</button>
+        <span class="contact-card-kicker">MAIL / CONTACT</span>
+        <h2>欢迎联系我</h2>
+        <p>如果你也在做产品、AI 工具或有趣的工作流，欢迎来聊聊。</p>
+        <a href="mailto:2388598618@qq.com">2388598618@qq.com</a>
+        <div class="contact-wechat">WeChat · zhengyyff123</div>
+      </section>
+
+      <section class="photo-viewer" id="photo-viewer" aria-hidden="true" aria-label="照片画廊大图预览">
+        <div class="photo-viewer-card" role="dialog" aria-modal="true" aria-labelledby="photo-viewer-caption">
+          <button class="photo-viewer-close" id="photo-viewer-close" type="button" aria-label="关闭照片">×</button>
+          <button class="photo-viewer-nav photo-viewer-nav--previous" id="photo-viewer-previous" type="button" aria-label="查看上一张照片">‹</button>
+          <img id="photo-viewer-image" alt="" />
+          <button class="photo-viewer-nav photo-viewer-nav--next" id="photo-viewer-next" type="button" aria-label="查看下一张照片">›</button>
+          <p id="photo-viewer-caption"></p>
+          <span class="photo-viewer-hint">点击空白处或按 Esc 关闭</span>
+        </div>
+      </section>
+
+      <section class="profile-card-viewer" id="profile-card-viewer" aria-hidden="true" aria-label="卡套放大预览">
+        <div class="profile-card-viewer-panel" role="dialog" aria-modal="true" aria-label="完整卡套模型预览">
+          <button class="profile-card-viewer-close" id="profile-card-viewer-close" type="button" aria-label="关闭卡套预览">×</button>
+          <div class="profile-card-viewer-stage">
+            <canvas id="profile-card-viewer-canvas" aria-label="3D 卡套放大模型"></canvas>
+          </div>
+          <small>完整卡套预览 · 点击空白处或按 Esc 关闭</small>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
