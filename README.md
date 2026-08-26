@@ -4,11 +4,12 @@
 
 本仓库是独立的 3D 房间项目，不包含个人简历页面，也不包含真实个人照片。照片墙和茶几美食使用了可替换的占位图，下载后可以换成你自己的素材。
 
-![yf-3Droom 预览图](docs/preview.svg)
+![yf-3Droom 预览图](docs/preview.png)
 
 ## 预览
 
 - 在线仓库：[github.com/YYFan-SZ/yf-3Droom](https://github.com/YYFan-SZ/yf-3Droom)
+- 在线体验：[https://www.zhengyifan.homes/room-engine/index.html](https://www.zhengyifan.homes/room-engine/index.html)
 - 本地开发地址：<http://localhost:5173/>
 
 如果项目部署到 GitHub Pages、Vercel 或其他静态托管平台，把部署后的网址替换到这里即可。
@@ -84,10 +85,9 @@ src/
   main.js          场景、资源预加载和互动逻辑
   style.css        页面和弹窗样式
 docs/
-  preview.svg      README 预览示意图
+  preview.png      README 预览图
 ```
 
 ## 许可证
 
 项目代码采用 [MIT License](LICENSE)。它允许你学习、修改、发布和制作自己的版本，但第三方模型、音乐和你后来加入的照片不自动包含在这个代码许可证里，请分别确认它们的使用权。
-
