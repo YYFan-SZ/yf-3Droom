@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">美食占位图</title>
+  <desc id="desc">可替换为自己的美食照片</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8e1ca"/>
+      <stop offset="1" stop-color="#e5a895"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <ellipse cx="600" cy="500" rx="360" ry="190" fill="#fff8ef" opacity=".8"/>
+  <circle cx="510" cy="480" r="82" fill="#f1bd6c" opacity=".9"/>
+  <circle cx="690" cy="480" r="82" fill="#c77664" opacity=".9"/>
+  <circle cx="600" cy="410" r="82" fill="#e89f8d" opacity=".9"/>
+  <text x="600" y="170" text-anchor="middle" fill="#7b514e" font-size="42" font-family="system-ui, sans-serif" font-weight="700">FOOD PLACEHOLDER</text>
+  <text x="600" y="740" text-anchor="middle" fill="#7b514e" font-size="28" font-family="system-ui, sans-serif">替换为你的美食照片</text>
+</svg>
